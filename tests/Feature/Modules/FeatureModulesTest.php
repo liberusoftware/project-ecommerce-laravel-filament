@@ -9,6 +9,7 @@ use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Liberu\Ecommerce\Dropxl\Filament\DropxlImport;
+use Liberu\Ecommerce\Printful\Filament\PrintfulImport;
 use Liberu\Foundation\ModuleManager\ModuleInventory;
 use Tests\Feature\Modules\Concerns\InstallsFixtureModules;
 use Tests\TestCase;
@@ -47,6 +48,8 @@ class FeatureModulesTest extends TestCase
         $this->assertNotNull(app(TeamModules::class)->definition('ecommerce-printful'));
         $this->assertContains(DropxlImport::class, Filament::getPanel('admin')->getPages());
         $this->assertTrue(Route::has('filament.admin.pages.dropxl-import'));
+        $this->assertContains(PrintfulImport::class, Filament::getPanel('admin')->getPages());
+        $this->assertTrue(Route::has('filament.admin.pages.printful-import'));
         $this->assertArrayHasKey('printful:import-products', Artisan::all());
     }
 
@@ -57,6 +60,8 @@ class FeatureModulesTest extends TestCase
         $this->assertNull(app(TeamModules::class)->definition('ecommerce-printful'));
         $this->assertNotContains(DropxlImport::class, Filament::getPanel('admin')->getPages());
         $this->assertFalse(Route::has('filament.admin.pages.dropxl-import'));
+        $this->assertNotContains(PrintfulImport::class, Filament::getPanel('admin')->getPages());
+        $this->assertFalse(Route::has('filament.admin.pages.printful-import'));
         $this->assertArrayNotHasKey('printful:import-products', Artisan::all());
 
         foreach (self::MODULES as $module) {

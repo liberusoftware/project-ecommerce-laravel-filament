@@ -18,6 +18,8 @@ class PrintfulServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'ecommerce-printful');
+
         if ($this->app->runningInConsole()) {
             $this->commands([ImportPrintfulProducts::class]);
             $this->publishes([__DIR__.'/../config/printful.php' => config_path('printful.php')], 'printful-config');

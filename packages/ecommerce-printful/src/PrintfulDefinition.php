@@ -3,9 +3,11 @@
 namespace Liberu\Ecommerce\Printful;
 
 use Liberu\Ecommerce\Contracts\Modules\ModuleDefinition;
+use Liberu\Ecommerce\Contracts\Modules\ProvidesPanelPlugins;
 use Liberu\Ecommerce\Contracts\Modules\SettingField;
+use Liberu\Ecommerce\Printful\Filament\PrintfulPlugin;
 
-class PrintfulDefinition implements ModuleDefinition
+class PrintfulDefinition implements ModuleDefinition, ProvidesPanelPlugins
 {
     public const KEY = 'ecommerce-printful';
 
@@ -35,5 +37,10 @@ class PrintfulDefinition implements ModuleDefinition
     public function validateSettings(array $settings): array
     {
         return [];
+    }
+
+    public function panelPlugins(string $panel): array
+    {
+        return $panel === 'admin' ? [new PrintfulPlugin] : [];
     }
 }

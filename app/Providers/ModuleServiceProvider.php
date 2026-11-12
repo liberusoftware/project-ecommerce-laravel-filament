@@ -7,9 +7,11 @@ use App\Console\Commands\Modules\ThemeValidateCommand;
 use App\Models\Store;
 use App\Services\Fulfilment\FulfilmentProviders;
 use App\Services\Fulfilment\SupplierProductImporter;
+use App\Support\Modules\Products;
 use App\Support\Modules\Stores;
 use App\Support\Modules\TeamModules;
 use Illuminate\Support\ServiceProvider;
+use Liberu\Ecommerce\Contracts\Catalog\ProductDirectory;
 use Liberu\Ecommerce\Contracts\Catalog\ProductImporter;
 use Liberu\Ecommerce\Contracts\Modules\ModuleState;
 use Liberu\Ecommerce\Contracts\Stores\StoreDirectory;
@@ -27,6 +29,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->scoped(FulfilmentProviders::class);
         $this->app->bind(ProductImporter::class, SupplierProductImporter::class);
         $this->app->bind(StoreDirectory::class, Stores::class);
+        $this->app->bind(ProductDirectory::class, Products::class);
     }
 
     public function boot(): void

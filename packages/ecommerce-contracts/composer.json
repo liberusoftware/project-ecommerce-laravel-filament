@@ -2,7 +2,7 @@
     "name": "liberusoftware/ecommerce-contracts",
     "description": "The stable boundary between the Liberu ecommerce core and independently distributed modules.",
     "type": "library",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "require": {
         "php": "^8.5"
