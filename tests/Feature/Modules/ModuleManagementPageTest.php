@@ -100,6 +100,11 @@ class ModuleManagementPageTest extends TestCase
         }
     }
 
+    public function test_it_is_listed_under_settings(): void
+    {
+        $this->assertSame('Settings', ModuleManagement::getNavigationGroup());
+    }
+
     public function test_only_staff_who_manage_modules_can_reach_it(): void
     {
         $staff = User::factory()->create();

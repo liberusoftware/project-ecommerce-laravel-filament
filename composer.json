@@ -28,7 +28,7 @@
         "liberusoftware/ecommerce-dropxl": "^0.1",
         "liberusoftware/ecommerce-printful": "^0.1",
         "liberusoftware/module-manager": "^1.9",
-        "liberusoftware/module-manager-filament": "^1.10",
+        "liberusoftware/module-manager-filament": "^1.11",
         "liberusoftware/tenancy": "^1.0.1",
         "liberusoftware/users-roles": "^1.0",
         "livewire/livewire": "^4.4.8",

@@ -6,7 +6,7 @@ DropXL dropshipping fulfilment and catalogue import for the Liberu ecommerce pla
 composer require liberusoftware/ecommerce-dropxl
 ```
 
-It is a feature module, off until a platform admin enables it on **Operations → Modules**. Then the platform makes it available to teams on **Team integrations**, and the merchant enters their API key and enables it on **Integrations**. Disabling it on **Modules** removes its fulfilment, stock checks and the **Dropshipping → Import from DropXL** page from the next request; the Composer package stays installed.
+It is a feature module, off until a platform admin enables it on **Settings → Modules**. Then the platform makes it available to teams on **Team integrations**, and the merchant enters their API key and enables it on **Integrations**. Disabling it on **Modules** removes its fulfilment, stock checks and the **Dropshipping → Import from DropXL** page from the next request; the Composer package stays installed.
 
 A product whose `supplier_id` is `dropxl` sends its lines to that store's DropXL account. Imported products are written by the core's `ProductImporter`: matched on DropXL's product id on re-import, and not stock-tracked, because DropXL is asked for availability instead.
 
