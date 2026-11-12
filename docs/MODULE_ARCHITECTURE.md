@@ -21,7 +21,7 @@ Nothing here has been published or pushed. §12 lists what is open.
 | --- | --- | --- |
 | Deployment operator | Install and remove with Composer | `composer.lock`; `MODULES_ENABLED` and `MODULES_DISABLED` set the defaults, and `MODULES_DISABLED` overrides everything else |
 | The core | Gate each store by its team; the manager discovers, validates and registers | `ModuleServiceProvider`, `ModuleManagerServiceProvider` |
-| Platform admin | Turn installed modules on and off; offer them to teams; see what loaded and why not | `module_activations`, on **Operations → Modules**, from `module-manager-filament`; `module_availability`, on **Settings → Team integrations**; `php artisan module:list` and `module:status` |
+| Platform admin | Turn installed modules on and off; offer them to teams; see what loaded and why not | `module_activations`, on **Settings → Modules**, from `module-manager-filament`; `module_availability`, on **Settings → Team integrations**; `php artisan module:list` and `module:status` |
 | Team | Enable and configure it; every store of the team inherits it | `team_modules.enabled` and `settings`, on **Integrations** |
 | Existing authorization | Decide who may do any of this | `StoreAccess`, Gate abilities |
 
@@ -46,7 +46,7 @@ A store's module is **active** only when steps 5 to 8 all hold. Steps 2 and 5 ne
 | Module | Why it is required |
 | --- | --- |
 | `module-manager` | Its classes do the discovery and validation |
-| `module-manager-filament` | It provides **Operations → Modules**; switched off, nothing could switch modules back on from the panel |
+| `module-manager-filament` | It provides **Settings → Modules**; switched off, nothing could switch modules back on from the panel |
 | `tenancy` | `App\Traits\IsTenantModel` uses its `BelongsToTeam` |
 | `users-roles` | `App\Models\User` extends its model |
 
@@ -122,7 +122,7 @@ module-ecommerce-acme/                 liberusoftware/ecommerce-acme
 }
 ```
 
-`module_type` is what puts a module on **Operations → Modules**, listed by its `display_name` with its `description` beneath. `feature` is something an administrator switches on and off, such as an integration. Leave it out, or set `infrastructure`, for what the application is built on, such as the module manager, tenancy and users and roles; those are never listed there. Requiring the package is not enough, and its vendor name plays no part.
+`module_type` is what puts a module on **Settings → Modules**, listed by its `display_name` with its `description` beneath. `feature` is something an administrator switches on and off, such as an integration. Leave it out, or set `infrastructure`, for what the application is built on, such as the module manager, tenancy and users and roles; those are never listed there. Requiring the package is not enough, and its vendor name plays no part.
 
 The rules `module:validate` enforces:
 
@@ -288,7 +288,7 @@ The flow:
 
 1. `composer require liberusoftware/ecommerce-acme`, and commit the lock file.
 2. Merge, let CI pass, build and deploy. The deploy runs its migrations.
-3. Enable it on **Operations → Modules**.
+3. Enable it on **Settings → Modules**.
 4. On **Settings → Team integrations**, offer it. Each team then configures and enables it on **Integrations**.
 
 To develop locally against an unpublished module, add a temporary path repository with `composer config repositories.acme path ../module-ecommerce-acme`, and do not commit it.
@@ -303,7 +303,7 @@ To develop locally against an unpublished module, add a temporary path repositor
 These are separate steps on purpose, and the data stays unless you choose step 3.
 
 1. Withdraw it on **Settings → Team integrations**, which turns it off for every team. The page shows how many teams use it.
-2. Disable it on **Operations → Modules**. The code is present and does not boot.
+2. Disable it on **Settings → Modules**. The code is present and does not boot.
 3. Optional and destructive, while the files still exist: `php artisan migrate:reset --path=modules/<name>/database/migrations`, and delete its `team_modules` and `module_availability` rows.
 4. `composer remove`, and deploy.
 
@@ -339,7 +339,7 @@ A new module's own repository keeps the three thin workflows in [`MODULE_DEVELOP
 
 ## 10. Printful and DropXL
 
-**Printful** is `packages/ecommerce-printful` and **DropXL** is `packages/ecommerce-dropxl`. Each is a complete `liberu-module` feature package requiring only the contracts, and the core's `composer.json` requires both, so every deployment has them installed and off until enabled on **Operations → Modules**. They are path repositories because publishing needs approval; to split one, move the directory to its own repository unchanged and replace the path repository with a version.
+**Printful** is `packages/ecommerce-printful` and **DropXL** is `packages/ecommerce-dropxl`. Each is a complete `liberu-module` feature package requiring only the contracts, and the core's `composer.json` requires both, so every deployment has them installed and off until enabled on **Settings → Modules**. They are path repositories because publishing needs approval; to split one, move the directory to its own repository unchanged and replace the path repository with a version.
 
 DropXL's **Import from DropXL** page is a Filament plugin its definition returns for the `admin` panel. It lists stores through the contracts' `StoreDirectory`, allows those the `ecommerce.catalogue.manage` gate allows, and writes products through `ProductImporter`. Imported products are therefore matched on DropXL's product id and not stock-tracked, where the built-in service matched on slug and copied DropXL's stock count; availability is DropXL's to answer at checkout. Nothing confirms DropXL's API is real, so check it against an account before relying on it.
 
@@ -351,7 +351,7 @@ Disabled, neither registers its provider: no fulfilment, no stock checks, no `pr
 | --- | --- |
 | New `tenancy`, contracts and `dont-discover` entries | Resolve `composer.lock` by re-running Composer |
 | Supplier credentials leave `.env` | Enter them per team on **Integrations**. `PRINTFUL_API_TOKEN` and `DROPXL_API_KEY` are no longer used |
-| A site using Printful or DropXL | Enable it on **Operations → Modules**, then offer it on **Team integrations** and enable it on **Integrations**. **Until then its products show as sold out** |
+| A site using Printful or DropXL | Enable it on **Settings → Modules**, then offer it on **Team integrations** and enable it on **Integrations**. **Until then its products show as sold out** |
 | `services.dropxl` | Moves to `dropxl.url`, still read from `DROPXL_API_URL` |
 | `printful:import-products` | Now needs `--store=<id>` on a multi-store deployment |
 | `dropshipping.suppliers.printful.categories` | Moves to `printful.categories` |

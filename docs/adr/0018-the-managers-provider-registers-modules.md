@@ -2,7 +2,7 @@
 
 **Status**: accepted, 2026-11-06. Supersedes [ADR 0014](./0014-host-module-registration.md).
 
-**Amended 2026-11-11**: `module-manager-filament` 1.10.0 removes the Foundation Operations page, and the host drops its `viewModuleDiagnostics` gate. Diagnostics are `module:list` and `module:status`; **Operations → Modules** is the package's only page.
+**Amended 2026-11-11**: `module-manager-filament` 1.10.0 removes the Foundation Operations page, and the host drops its `viewModuleDiagnostics` gate. Diagnostics are `module:list` and `module:status`; **Settings → Modules** is the package's only page.
 
 ADR 0014 kept a host copy of module loading because `ModuleManagerServiceProvider` stopped at the first broken module. `liberusoftware/module-manager` 1.7.0 adds per-module isolation to the provider itself, behind `modules.isolate_failures`, with the same rules the host carried: an optional module that fails is left out and reported, and a module in `modules.required` that fails stops the boot by name and cannot be disabled.
 
