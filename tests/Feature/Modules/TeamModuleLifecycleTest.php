@@ -12,11 +12,11 @@ use App\Models\TeamModule;
 use App\Models\User;
 use App\Support\Modules\ModuleActivationRefused;
 use App\Support\Modules\TeamModules;
-use Composer\InstalledVersions;
 use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\ValidationException;
 use Liberu\Ecommerce\Contracts\Modules\Abilities;
@@ -28,9 +28,7 @@ use Liberu\Ecommerce\FixtureSupplier\Filament\FixturePage;
 use Liberu\Ecommerce\FixtureSupplier\FixtureClient;
 use Liberu\Ecommerce\FixtureSupplier\FixtureDefinition;
 use Liberu\Foundation\ModuleManager\ModuleInventory;
-use Liberu\Foundation\ModuleManagerFilament\Pages\FoundationOperations;
 use Livewire\Livewire;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tests\Feature\Modules\Concerns\InstallsFixtureModules;
@@ -324,31 +322,15 @@ class TeamModuleLifecycleTest extends TestCase
     {
         $this->merchant();
         $this->assertFalse(TeamModuleOffers::canAccess());
-        $this->assertFalse(FoundationOperations::canAccess());
 
         $this->actingAs(User::factory()->create());
         $this->assertFalse(TeamModuleOffers::canAccess());
-        $this->assertFalse(FoundationOperations::canAccess());
     }
 
-    public function test_the_module_managers_diagnostics_page_is_in_the_admin_panel(): void
+    public function test_there_is_no_foundation_operations_page(): void
     {
-        $this->platformAdmin();
-
-        $this->assertContains(FoundationOperations::class, Filament::getPanel('admin')->getPages());
-        $this->assertNotContains(FoundationOperations::class, Filament::getPanel('app')->getPages());
-        $this->assertTrue(FoundationOperations::canAccess());
-    }
-
-    public function test_the_diagnostics_page_shows_a_module_that_failed_to_load_and_why(): void
-    {
-        $this->platformAdmin();
-        app(ModuleInventory::class)->markFailed(self::MODULE, 'Its provider failed to register: boom');
-
-        Livewire::test(FoundationOperations::class)
-            ->assertSee(self::MODULE)
-            ->assertSee('tenancy')
-            ->assertSee('Its provider failed to register: boom');
+        $this->assertFalse(Route::has('filament.admin.pages.foundation-operations'));
+        $this->assertTrue(Route::has('filament.admin.pages.modules'));
     }
 
     public function test_a_merchant_sees_only_what_is_offered_then_configures_and_enables_it_for_the_team(): void
@@ -500,15 +482,6 @@ class TeamModuleLifecycleTest extends TestCase
         $this->assertNull(app(ModuleState::class)->currentTeamId());
     }
 
-    public function test_module_diagnostics_are_for_the_platform_only(): void
-    {
-        $this->platformAdmin();
-        $this->assertTrue(Gate::allows('viewModuleDiagnostics'));
-
-        $this->merchant();
-        $this->assertFalse(Gate::allows('viewModuleDiagnostics'));
-    }
-
     public function test_each_action_re_renders_the_row_with_its_new_state(): void
     {
         $this->activate($this->teamA);
@@ -531,22 +504,6 @@ class TeamModuleLifecycleTest extends TestCase
             ->assertTableColumnStateSet('teams', 0, self::MODULE)
             ->callTableAction('offer', self::MODULE)
             ->assertTableColumnStateSet('availability', 'offered', self::MODULE);
-    }
-
-    public function test_platform_staff_with_manage_modules_open_the_diagnostics_page_without_observability(): void
-    {
-        $this->assertFalse(InstalledVersions::isInstalled('liberusoftware/observability'));
-        $page = FoundationOperations::getUrl(panel: 'admin');
-
-        $staff = User::factory()->create();
-        foreach (['access_admin_panel', 'manage_modules'] as $permission) {
-            $staff->givePermissionTo(Permission::findOrCreate($permission, 'web'));
-        }
-
-        $this->actingAs($staff)->get($page)->assertOk()->assertSee('tenancy')->assertHeaderMissing('X-Correlation-ID');
-
-        $panelOnly = User::factory()->create()->givePermissionTo(Permission::findOrCreate('access_admin_panel', 'web'));
-        $this->actingAs($panelOnly)->get($page)->assertForbidden();
     }
 
     private function assertRefused(callable $action): void

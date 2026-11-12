@@ -21,7 +21,7 @@ Nothing here has been published or pushed. §12 lists what is open.
 | --- | --- | --- |
 | Deployment operator | Install and remove with Composer | `composer.lock`; `MODULES_ENABLED` and `MODULES_DISABLED` set the defaults, and `MODULES_DISABLED` overrides everything else |
 | The core | Gate each store by its team; the manager discovers, validates and registers | `ModuleServiceProvider`, `ModuleManagerServiceProvider` |
-| Platform admin | Turn installed modules on and off; offer them to teams; see what loaded and why not | `module_activations`, on **Operations → Modules**, from `module-manager-filament`; `module_availability`, on **Settings → Team integrations**; **Operations → Foundation Operations** from `module-manager-filament` |
+| Platform admin | Turn installed modules on and off; offer them to teams; see what loaded and why not | `module_activations`, on **Operations → Modules**, from `module-manager-filament`; `module_availability`, on **Settings → Team integrations**; `php artisan module:list` and `module:status` |
 | Team | Enable and configure it; every store of the team inherits it | `team_modules.enabled` and `settings`, on **Integrations** |
 | Existing authorization | Decide who may do any of this | `StoreAccess`, Gate abilities |
 
