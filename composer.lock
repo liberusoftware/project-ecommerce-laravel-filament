@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc19121b76134d30953933da7babd0eb",
+    "content-hash": "99fbbea6a2f4cd42ea9f1a93cab90f10",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5421,16 +5421,16 @@
         },
         {
             "name": "liberusoftware/module-manager-filament",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liberusoftware/module-module-manager-filament.git",
-                "reference": "f4973b0bbd5ba8909f576390de0e8f273073d68f"
+                "reference": "16e336d20f5f6ad87f1d792680d2e30a277ee767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-module-manager-filament/zipball/f4973b0bbd5ba8909f576390de0e8f273073d68f",
-                "reference": "f4973b0bbd5ba8909f576390de0e8f273073d68f",
+                "url": "https://api.github.com/repos/liberusoftware/module-module-manager-filament/zipball/16e336d20f5f6ad87f1d792680d2e30a277ee767",
+                "reference": "16e336d20f5f6ad87f1d792680d2e30a277ee767",
                 "shasum": ""
             },
             "require": {
@@ -5442,9 +5442,6 @@
                 "liberusoftware/package-testbench": "^1.5",
                 "livewire/livewire": "^4.0",
                 "pestphp/pest": "^5.3.3"
-            },
-            "suggest": {
-                "liberusoftware/observability": "Lets users implementing ObservabilityActor reach the page when the application defines no viewModuleDiagnostics gate."
             },
             "type": "liberu-module",
             "extra": {
@@ -5461,13 +5458,13 @@
             "license": [
                 "MIT"
             ],
-            "description": "Filament operations presentation adapter for the Liberu Module Manager.",
+            "description": "Filament page for enabling and disabling Liberu feature modules.",
             "support": {
                 "issues": "https://github.com/liberusoftware/module-module-manager-filament/issues",
-                "source": "https://github.com/liberusoftware/module-module-manager-filament/tree/1.9.0"
+                "source": "https://github.com/liberusoftware/module-module-manager-filament/tree/1.10.0"
             },
-            "time": "2026-11-10T20:20:01+00:00",
-            "published-time": "2026-11-10T20:20:50+00:00"
+            "time": "2026-11-12T17:37:38+00:00",
+            "published-time": "2026-11-12T17:40:11+00:00"
         },
         {
             "name": "liberusoftware/tenancy",
