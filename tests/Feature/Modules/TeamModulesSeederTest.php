@@ -21,6 +21,8 @@ class TeamModulesSeederTest extends TestCase
 
     public function test_it_seeds_nothing_when_the_site_names_no_module(): void
     {
+        config(['team-modules.seed' => [], 'team-modules.store_commands' => []]);
+
         $this->seed(TeamModulesSeeder::class);
 
         $this->assertSame(0, DB::table('module_activations')->count());
