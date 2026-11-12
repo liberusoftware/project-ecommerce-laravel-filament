@@ -34,6 +34,9 @@ class DatabaseSeeder extends Seeder
             $this->call(DummyDataSeeder::class);
         }
 
+        // Before menus, so a catalogue imported by a seeded module is in them.
+        $this->call(TeamModulesSeeder::class);
+
         $this->call(MenuSeeder::class);
     }
 }

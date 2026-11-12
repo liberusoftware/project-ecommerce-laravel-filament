@@ -352,6 +352,7 @@ Disabled, neither registers its provider: no fulfilment, no stock checks, no `pr
 | New `tenancy`, contracts and `dont-discover` entries | Resolve `composer.lock` by re-running Composer |
 | Supplier credentials leave `.env` | Enter them per team on **Integrations**. `PRINTFUL_API_TOKEN` and `DROPXL_API_KEY` are no longer used |
 | A site using Printful or DropXL | Enable it on **Settings → Modules**, then offer it on **Team integrations** and enable it on **Integrations**. **Until then its products show as sold out** |
+| A site that seeds its integrations | List them in `config/team-modules.php`: `seed` maps a module to its settings from the environment, and `TeamModulesSeeder` enables it on **Settings → Modules**, offers it and switches it on for each team whose settings are complete. `store_commands`, such as `printful:import-products`, run once per store from the seeder and hourly |
 | `services.dropxl` | Moves to `dropxl.url`, still read from `DROPXL_API_URL` |
 | `printful:import-products` | Now needs `--store=<id>` on a multi-store deployment |
 | `dropshipping.suppliers.printful.categories` | Moves to `printful.categories` |
