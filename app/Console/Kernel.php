@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Support\Modules\StoreCommands;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -20,6 +21,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('facebook:reconcile-catalog')->hourly();
 
         $schedule->command('fulfilment:sync-tracking')->hourly()->withoutOverlapping();
+
+        if (config('team-modules.store_commands') !== []) {
+            $schedule->call(fn () => app(StoreCommands::class)->run())->hourly()->name('team-modules.store-commands')->withoutOverlapping();
+        }
     }
 
     /**
