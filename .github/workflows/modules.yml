@@ -40,11 +40,13 @@ jobs:
         run: php artisan module:validate --strict
       - name: Themes are valid
         run: php artisan theme:validate
-      - name: Nothing optional boots by default
+      - name: Nothing optional boots unless the deployment enables it
         run: |
+          export ENABLED="$(php artisan tinker --execute 'echo implode(",", config("modules.enabled"));')"
           php artisan module:list --json | python3 -c "
-          import json, sys
-          booted = [m['module'] for m in json.load(sys.stdin) if m['status'] == 'booted' and m['kind'] == 'optional']
+          import json, os, sys
+          enabled = set(filter(None, os.environ['ENABLED'].split(',')))
+          booted = [m['module'] for m in json.load(sys.stdin) if m['status'] == 'booted' and m['kind'] == 'optional' and m['module'] not in enabled]
           sys.exit(f'Optional modules booted without being enabled: {booted}' if booted else 0)"
 
   # A real composer require, through composer-installer, into a real host.
