@@ -57,7 +57,7 @@ class ModuleManagementPageTest extends TestCase
             ->assertTableColumnStateSet('version', '0.1.0', 'ecommerce-dropxl')
             ->assertTableColumnStateSet('status', 'disabled', 'ecommerce-dropxl')
             ->assertTableActionVisible('enable', 'ecommerce-dropxl')
-            ->assertTableColumnStateSet('version', '0.1.0', 'ecommerce-printful')
+            ->assertTableColumnStateSet('version', '0.2.0', 'ecommerce-printful')
             ->assertTableColumnStateSet('status', 'disabled', 'ecommerce-printful')
             ->assertTableActionVisible('enable', 'ecommerce-printful')
             ->assertSee([

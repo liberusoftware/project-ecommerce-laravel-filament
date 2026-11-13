@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eb4d17602ae64de3ce2d73c11c9a0ef",
+    "content-hash": "5ad7a858277e4f29f5def41cd3c9f67f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5267,11 +5267,11 @@
         },
         {
             "name": "liberusoftware/ecommerce-contracts",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "dist": {
                 "type": "path",
                 "url": "packages/ecommerce-contracts",
-                "reference": "0948baac50747f34e10b29e602c7331911cb576f"
+                "reference": "eae4fafee96e2959e64a2f1437724c57b1dbbbe6"
             },
             "require": {
                 "php": "^8.5"
@@ -5333,17 +5333,18 @@
         },
         {
             "name": "liberusoftware/ecommerce-printful",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "dist": {
                 "type": "path",
                 "url": "packages/ecommerce-printful",
-                "reference": "698e9753008678b92b4c9e595ba91ab2aa65e559"
+                "reference": "7007b1f2b28fd86d7c9ad494e4da97ec8068844a"
             },
             "require": {
+                "filament/filament": "^5.0",
                 "illuminate/console": "^13.0",
                 "illuminate/http": "^13.0",
                 "illuminate/support": "^13.0",
-                "liberusoftware/ecommerce-contracts": "^1.0",
+                "liberusoftware/ecommerce-contracts": "^1.2",
                 "php": "^8.5"
             },
             "type": "liberu-module",

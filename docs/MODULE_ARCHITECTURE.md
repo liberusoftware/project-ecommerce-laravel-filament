@@ -343,7 +343,7 @@ A new module's own repository keeps the three thin workflows in [`MODULE_DEVELOP
 
 DropXL's **Import from DropXL** page is a Filament plugin its definition returns for the `admin` panel. It lists stores through the contracts' `StoreDirectory`, allows those the `ecommerce.catalogue.manage` gate allows, and writes products through `ProductImporter`. Imported products are therefore matched on DropXL's product id and not stock-tracked, where the built-in service matched on slug and copied DropXL's stock count; availability is DropXL's to answer at checkout. Nothing confirms DropXL's API is real, so check it against an account before relying on it.
 
-Disabled, neither registers its provider: no fulfilment, no stock checks, no `printful:import-products`, no DropXL page or menu entry, and neither appears on **Integrations**. The packages stay installed.
+Printful's **Import from Printful** page is built the same way, listing a store's products through the contracts' `ProductDirectory` to import onto. Disabled, neither registers its provider: no fulfilment, no stock checks, no `printful:import-products`, no import page or menu entry, and neither appears on **Integrations**. The packages stay installed.
 
 **What changes when a site merges this.** The sites are not modified by this work. On their next merge from the core:
 

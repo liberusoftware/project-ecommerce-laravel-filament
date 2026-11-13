@@ -19,16 +19,24 @@ class PrintfulCatalog implements SupplierCatalog
 
     public function productIds(array $settings): array
     {
-        $ids = [];
+        return array_column($this->summaries($settings), 'id');
+    }
+
+    /** @return list<array{id: int|string, name: ?string, thumbnail_url: ?string, variants: ?int}> the store's sync products */
+    public function summaries(array $settings): array
+    {
+        $products = [];
         $offset = 0;
 
         do {
             $page = (array) PrintfulApi::get($settings, '/store/products', ['offset' => $offset, 'limit' => 100])->throw()->json('result', []);
-            array_push($ids, ...array_column($page, 'id'));
+            foreach ($page as $product) {
+                $products[] = ['id' => $product['id'], 'name' => $product['name'] ?? null, 'thumbnail_url' => $product['thumbnail_url'] ?? null, 'variants' => $product['variants'] ?? null];
+            }
             $offset += count($page);
         } while (count($page) === 100);
 
-        return $ids;
+        return $products;
     }
 
     public function product(int|string $supplierProductId, array $settings): ImportedProduct

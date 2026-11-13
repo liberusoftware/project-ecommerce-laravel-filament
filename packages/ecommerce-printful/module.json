@@ -3,7 +3,7 @@
     "name": "ecommerce-printful",
     "display_name": "Printful",
     "description": "Printful print-on-demand fulfilment and catalogue import, activated per store.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "category": "adapter",
     "module_type": "feature",
     "provider": "Liberu\\Ecommerce\\Printful\\PrintfulServiceProvider",
@@ -11,14 +11,17 @@
         "php": "^8.5",
         "laravel": "^13.0",
         "packages": {
-            "liberusoftware/ecommerce-contracts": "^1.0"
+            "liberusoftware/ecommerce-contracts": "^1.2"
         }
     },
-    "capabilities": ["ecommerce.fulfilment.printful"],
+    "capabilities": [
+        "ecommerce.fulfilment.printful"
+    ],
     "default_enabled": false,
     "features": [
         "Sends a store's Printful lines to its own Printful account",
         "Reads tracking from Printful's shipments",
-        "Imports a Printful store as made-to-order products"
+        "Imports a Printful store as made-to-order products",
+        "Imports one Printful product from the admin panel, new or onto an existing product"
     ]
 }
