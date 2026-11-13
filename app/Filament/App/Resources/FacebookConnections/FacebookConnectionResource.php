@@ -14,6 +14,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Auth\Access\Response;
 
 class FacebookConnectionResource extends Resource
 {
@@ -79,7 +80,14 @@ class FacebookConnectionResource extends Resource
     /** One Catalog per Team — the unique index would refuse a second anyway. */
     public static function canCreate(): bool
     {
-        return parent::canCreate() && ! static::getEloquentQuery()->exists();
+        return parent::getCreateAuthorizationResponse()->allowed() && ! static::getEloquentQuery()->exists();
+    }
+
+    public static function getCreateAuthorizationResponse(): Response
+    {
+        return static::canCreate()
+            ? parent::getCreateAuthorizationResponse()
+            : Response::deny();
     }
 
     public static function getPages(): array
