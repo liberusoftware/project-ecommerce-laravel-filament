@@ -14,7 +14,7 @@
         "bursteri/socialstream": "^7.0.0",
         "filament/filament": "^5.11.0",
         "filament/spatie-laravel-settings-plugin": "^5.11.0",
-        "guzzlehttp/guzzle": "^7.16.1",
+        "guzzlehttp/guzzle": "^8.5",
         "laravel/cashier": "^16.9.0",
         "laravel/framework": "^13.38.0",
         "laravel/horizon": "^5.50.1",
