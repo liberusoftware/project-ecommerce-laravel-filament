@@ -4,8 +4,10 @@ namespace Tests\Feature\Modules;
 
 use App\Models\Store;
 use App\Models\Team;
+use App\Support\Modules\StoreCommands;
 use App\Support\Modules\TeamModules;
 use Database\Seeders\TeamModulesSeeder;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -71,5 +73,15 @@ class TeamModulesSeederTest extends TestCase
 
         $this->assertEqualsCanonicalizing(Store::query()->pluck('id')->all(), $seen);
         $this->assertContains($stores->first()->id, $seen);
+    }
+
+    public function test_a_store_command_can_run_daily_instead_of_hourly(): void
+    {
+        config(['team-modules.store_commands' => ['fixture:hourly', 'fixture:daily' => 'daily', 'fixture:odd' => 'weekly']]);
+
+        $this->assertSame(['fixture:hourly' => 'hourly', 'fixture:daily' => 'daily', 'fixture:odd' => 'hourly'], StoreCommands::configured());
+
+        $events = collect(app(Schedule::class)->events())->filter(fn ($event) => str_starts_with((string) $event->description, 'team-modules.store-commands'));
+        $this->assertEqualsCanonicalizing(['0 * * * *', '0 0 * * *'], $events->pluck('expression')->all());
     }
 }

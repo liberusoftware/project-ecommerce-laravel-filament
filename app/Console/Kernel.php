@@ -22,8 +22,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('fulfilment:sync-tracking')->hourly()->withoutOverlapping();
 
-        if (config('team-modules.store_commands') !== []) {
-            $schedule->call(fn () => app(StoreCommands::class)->run())->hourly()->name('team-modules.store-commands')->withoutOverlapping();
+        foreach (array_unique(StoreCommands::configured()) as $frequency) {
+            $schedule->call(fn () => app(StoreCommands::class)->run($frequency))->{$frequency}()->name("team-modules.store-commands.{$frequency}")->withoutOverlapping();
         }
     }
 
