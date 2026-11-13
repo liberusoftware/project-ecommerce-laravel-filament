@@ -10,6 +10,7 @@ return [
     // configures and enables it for each team once its required settings are present.
     'seed' => [],
 
-    // Commands run once per store, with --store, by the seeder and hourly, such as a catalogue import.
+    // Commands run once per store, with --store, by the seeder and then hourly, such as a catalogue import.
+    // List a command, or map it to 'hourly' or 'daily'.
     'store_commands' => [],
 ];
