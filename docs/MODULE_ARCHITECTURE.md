@@ -327,7 +327,7 @@ A web process able to write code turns any admin compromise into code execution.
 
 | Job | Fails when |
 | --- | --- |
-| `core` | The publisher's repository guard is removed; an installed module or a `composer.json` theme is committed; a manifest or theme is invalid; anything optional boots by default |
+| `core` | The publisher's repository guard is removed; an unexpected installed module (outside the default Printful and DropXL copies) or a `composer.json` theme is committed; a manifest or theme is invalid; anything optional boots by default |
 | `installed-module` | The fixture, Printful or DropXL fails a real install, `module:validate`, the composition test or its own tests |
 | `installed-theme` | The fixture theme fails a real install or Vite build, or loses its own classes |
 | `mysql` | Module and commerce tests fail on MySQL 8.4 |
@@ -339,7 +339,7 @@ A new module's own repository keeps the three thin workflows in [`MODULE_DEVELOP
 
 ## 10. Printful and DropXL
 
-**Printful** is `packages/ecommerce-printful` and **DropXL** is `packages/ecommerce-dropxl`. Each is a complete `liberu-module` feature package requiring only the contracts, and the core's `composer.json` requires both, so every deployment has them installed and off until enabled on **Settings → Modules**. They are path repositories because publishing needs approval; to split one, move the directory to its own repository unchanged and replace the path repository with a version.
+**Printful** has its tracked default copy in `modules/ecommerce-printful` and **DropXL** in `modules/ecommerce-dropxl`. Their authoritative repositories are [module-ecommerce-printful](https://github.com/liberusoftware/module-ecommerce-printful) and [module-ecommerce-dropxl](https://github.com/liberusoftware/module-ecommerce-dropxl). Composer installs and updates their versioned packages from Packagist; the tracked copies keep the default module code available on a fresh checkout. Both depend on the contracts package instead of the host application, and the core's `composer.json` requires both. They remain off until enabled on **Settings → Modules**.
 
 DropXL's **Import from DropXL** page is a Filament plugin its definition returns for the `admin` panel. It lists stores through the contracts' `StoreDirectory`, allows those the `ecommerce.catalogue.manage` gate allows, and writes products through `ProductImporter`. Imported products are therefore matched on DropXL's product id and not stock-tracked, where the built-in service matched on slug and copied DropXL's stock count; availability is DropXL's to answer at checkout. Nothing confirms DropXL's API is real, so check it against an account before relying on it.
 

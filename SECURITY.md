@@ -1,24 +1,22 @@
 # Security policy
 
-## Reporting a vulnerability
+## Reporting a Vulnerability
 
-Report privately through GitHub, never in a public issue or a pull request:
-[**Report a vulnerability**](https://github.com/liberusoftware/ecommerce-laravel/security/advisories/new).
-Private vulnerability reporting is enabled on this repository, so the draft advisory is visible only
-to you and the maintainers until it is published. No email address or PGP key is needed, and this
-project publishes neither.
+Private vulnerability reporting is enabled for [liberusoftware/project-ecommerce-laravel-filament](https://github.com/liberusoftware/project-ecommerce-laravel-filament).
 
-A useful report says what an attacker can do, not only what looks wrong. Include the affected file or
-route, the version or commit you tested, the steps to reproduce, and what an attacker gains — reading
-another tenant's data, escalating a role, forging a webhook, and so on. A proof of concept against
-your own local install is worth more than a description.
+[**Report a vulnerability privately**](https://github.com/liberusoftware/project-ecommerce-laravel-filament/security/advisories/new).
+
+Sign in to GitHub and use the link above, or open **Security → Advisories → Report a vulnerability** in this repository. Reports are handled privately through GitHub Security Advisories; maintainers can invite collaborators when needed to investigate and prepare a fix.
+
+**Do not disclose suspected vulnerabilities in public issues, pull requests, or discussions.**
+
+Include the affected release or commit, package versions, relevant deployment configuration, reproduction steps or a minimal proof of concept, and the security impact. Redact credentials, tokens, personal data, and other sensitive information. Test only systems you own or have permission to assess.
 
 ## What to expect
 
-This is a volunteer-maintained open-source project. There is no response-time commitment, no bug
-bounty and no published support policy, and rather than invent one: reports are read, and you will be
-told whether the finding is accepted, already known, or out of scope. If it is accepted you will be
-credited in the advisory unless you ask not to be.
+This is a volunteer-maintained open-source project. There is no guaranteed response time or bug
+bounty. Maintainers assess reports privately and coordinate remediation and disclosure with the
+reporter. You can request anonymity instead of credit in an advisory.
 
 Please give maintainers a reasonable chance to ship a fix before disclosing publicly.
 
@@ -30,26 +28,21 @@ In scope is anything in this repository that ships and runs: `app/`, `routes/`, 
 
 Out of scope:
 
-- Third-party dependencies. Report those to their own maintainers; `security.yml` already runs
-  `composer audit` and `npm audit` on every push and weekly.
+- Vulnerabilities confined to third-party dependencies: report them to their maintainers.
+  First-party integration flaws and application-specific security impact remain in scope here.
 - Findings that only apply with `APP_DEBUG=true`, default `.env.example` credentials, or a
   deliberately misconfigured install. `.env.example` and `.env.testing` hold development values by
   design and are not secrets.
-- Anything reachable only by a user who already has administrator rights in the Filament admin panel.
+- Actions that only exercise an administrator’s intended permissions without crossing a security
+  boundary. Privilege escalation and cross-tenant access remain in scope.
 - Automated scanner output with no demonstrated impact.
 
-## Known findings
+## Known Findings
 
-This repository is pre-production and mid-migration, and it documents its own open security gaps
-rather than implying it has none. [`docs/CONFORMANCE.md` §6](docs/CONFORMANCE.md#6-security-findings)
-records the tenancy findings measured at commit `2d1024c`, and
-[`docs/MIGRATION_PLAN.md`](docs/MIGRATION_PLAN.md) sequences the fixes. Please check both before
-reporting — a finding already recorded there is known, and a report that it is still present is only
-useful if it shows the impact is worse than recorded.
+Previously recorded findings and remediation are documented in [`docs/CONFORMANCE.md` §6](docs/CONFORMANCE.md#6-security-findings) and [`docs/MIGRATION_PLAN.md`](docs/MIGRATION_PLAN.md). Check their current status before submitting a duplicate. Additional impact or affected versions should still be reported privately.
 
-## Supported versions
+## Supported Versions
 
-No release under the `liberusoftware` vendor name has been published yet, so there is no supported
-release line. Fixes land on `main`. The five versions still on Packagist under the former
-`liberu-eccommerce` name are unsupported and should not be used — see
-[ADR 0009](docs/adr/0009-vendor-rename-to-liberusoftware.md).
+Security fixes target the default branch (`main`) and the latest release, when a release is available. Older versions may require an upgrade; backports are not guaranteed. Include the affected version or commit in your report even if you are not running the latest release.
+
+Legacy releases under the former `liberu-eccommerce` vendor name are unsupported; see [ADR 0009](docs/adr/0009-vendor-rename-to-liberusoftware.md).

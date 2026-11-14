@@ -30,8 +30,8 @@ jobs:
           if [ -n "$(git ls-files 'themes/*/composer.json')" ]; then
             echo '::error::A tracked theme has a composer.json, so sync-packages would publish it'; exit 1
           fi
-          if [ -n "$(git ls-files 'modules/ecommerce-*' 'modules/fixture-*' 'modules/module-manager')" ]; then
-            echo '::error::Composer-installed modules must not be committed'; exit 1
+          if [ -n "$(git ls-files 'modules/ecommerce-*' 'modules/fixture-*' 'modules/module-manager' ':(exclude)modules/ecommerce-printful/**' ':(exclude)modules/ecommerce-dropxl/**')" ]; then
+            echo '::error::Unexpected Composer-installed modules must not be committed'; exit 1
           fi
       - run: cp .env.example .env
       - run: composer install --no-interaction --prefer-dist --no-progress

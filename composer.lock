@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12eb5074bd6c6c59c6e3e2f580ea2c8f",
+    "content-hash": "c0ad60844c7267f959b7965a3aed05dd",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5276,10 +5276,16 @@
         {
             "name": "liberusoftware/ecommerce-contracts",
             "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liberusoftware/ecommerce-contracts.git",
+                "reference": "746e559952517b6df94403cd59c81fff400eb28a"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/ecommerce-contracts",
-                "reference": "eae4fafee96e2959e64a2f1437724c57b1dbbbe6"
+                "type": "zip",
+                "url": "https://api.github.com/repos/liberusoftware/ecommerce-contracts/zipball/746e559952517b6df94403cd59c81fff400eb28a",
+                "reference": "746e559952517b6df94403cd59c81fff400eb28a",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5"
@@ -5290,22 +5296,30 @@
                     "Liberu\\Ecommerce\\Contracts\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "The stable boundary between the Liberu ecommerce core and independently distributed modules.",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/liberusoftware/ecommerce-contracts/issues",
+                "source": "https://github.com/liberusoftware/ecommerce-contracts/tree/v1.2.0"
+            },
+            "time": "2026-11-14T14:22:29+00:00"
         },
         {
             "name": "liberusoftware/ecommerce-dropxl",
             "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liberusoftware/module-ecommerce-dropxl.git",
+                "reference": "920557f9fa69cf686bd1774d3cfe1fc8e093c0a0"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/ecommerce-dropxl",
-                "reference": "67b4e7e1941320f647c5a1c07a1717a6dc14ef85"
+                "type": "zip",
+                "url": "https://api.github.com/repos/liberusoftware/module-ecommerce-dropxl/zipball/920557f9fa69cf686bd1774d3cfe1fc8e093c0a0",
+                "reference": "920557f9fa69cf686bd1774d3cfe1fc8e093c0a0",
+                "shasum": ""
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -5325,27 +5339,30 @@
                     "Liberu\\Ecommerce\\Dropxl\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Liberu\\Ecommerce\\Dropxl\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "DropXL dropshipping fulfilment and catalogue import for the Liberu ecommerce platform.",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/liberusoftware/module-ecommerce-dropxl/issues",
+                "source": "https://github.com/liberusoftware/module-ecommerce-dropxl/tree/v0.1.0"
+            },
+            "time": "2026-11-14T14:30:26+00:00"
         },
         {
             "name": "liberusoftware/ecommerce-printful",
             "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liberusoftware/module-ecommerce-printful.git",
+                "reference": "abb5892b61ad4c2c2b651a78b42e09ed4bc03c18"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/ecommerce-printful",
-                "reference": "7007b1f2b28fd86d7c9ad494e4da97ec8068844a"
+                "type": "zip",
+                "url": "https://api.github.com/repos/liberusoftware/module-ecommerce-printful/zipball/abb5892b61ad4c2c2b651a78b42e09ed4bc03c18",
+                "reference": "abb5892b61ad4c2c2b651a78b42e09ed4bc03c18",
+                "shasum": ""
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -5366,19 +5383,16 @@
                     "Liberu\\Ecommerce\\Printful\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Liberu\\Ecommerce\\Printful\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Printful print-on-demand fulfilment and catalogue import for the Liberu ecommerce platform.",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/liberusoftware/module-ecommerce-printful/issues",
+                "source": "https://github.com/liberusoftware/module-ecommerce-printful/tree/v0.2.0"
+            },
+            "time": "2026-11-14T14:30:27+00:00"
         },
         {
             "name": "liberusoftware/module-manager",
@@ -5429,16 +5443,16 @@
         },
         {
             "name": "liberusoftware/module-manager-filament",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liberusoftware/module-module-manager-filament.git",
-                "reference": "7501de66f5c5d55c9efa7643727a6b880335158b"
+                "reference": "f6bdb12c7ce76e2a00c03ed9456fb8d23d3041e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-module-manager-filament/zipball/7501de66f5c5d55c9efa7643727a6b880335158b",
-                "reference": "7501de66f5c5d55c9efa7643727a6b880335158b",
+                "url": "https://api.github.com/repos/liberusoftware/module-module-manager-filament/zipball/f6bdb12c7ce76e2a00c03ed9456fb8d23d3041e8",
+                "reference": "f6bdb12c7ce76e2a00c03ed9456fb8d23d3041e8",
                 "shasum": ""
             },
             "require": {
@@ -5469,22 +5483,22 @@
             "description": "Filament page for enabling and disabling Liberu feature modules.",
             "support": {
                 "issues": "https://github.com/liberusoftware/module-module-manager-filament/issues",
-                "source": "https://github.com/liberusoftware/module-module-manager-filament/tree/1.11.0"
+                "source": "https://github.com/liberusoftware/module-module-manager-filament/tree/v1.11.1"
             },
-            "time": "2026-11-12T22:05:17+00:00"
+            "time": "2026-11-14T17:21:33+00:00"
         },
         {
             "name": "liberusoftware/tenancy",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liberusoftware/module-tenancy.git",
-                "reference": "5c079502cf9c82c304f37eab141c8c7d5a77b2b7"
+                "reference": "9c107d1e47b0e164cd297a5537255e61e99d8c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liberusoftware/module-tenancy/zipball/5c079502cf9c82c304f37eab141c8c7d5a77b2b7",
-                "reference": "5c079502cf9c82c304f37eab141c8c7d5a77b2b7",
+                "url": "https://api.github.com/repos/liberusoftware/module-tenancy/zipball/9c107d1e47b0e164cd297a5537255e61e99d8c07",
+                "reference": "9c107d1e47b0e164cd297a5537255e61e99d8c07",
                 "shasum": ""
             },
             "require": {
@@ -5522,17 +5536,23 @@
             "description": "Shared Filament and Jetstream team tenancy with scoped runtime context and Eloquent isolation.",
             "support": {
                 "issues": "https://github.com/liberusoftware/module-tenancy/issues",
-                "source": "https://github.com/liberusoftware/module-tenancy/tree/v1.2.2"
+                "source": "https://github.com/liberusoftware/module-tenancy/tree/v1.2.3"
             },
-            "time": "2026-11-13T12:33:23+00:00"
+            "time": "2026-11-14T14:54:09+00:00"
         },
         {
             "name": "liberusoftware/users-roles",
-            "version": "1.0.0",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liberusoftware/module-users-roles.git",
+                "reference": "4aa49df470411bdea1f54abd1a6e76c6173b68d9"
+            },
             "dist": {
-                "type": "path",
-                "url": "modules/users-roles",
-                "reference": "9390410edaa397332d7b6d5b34d4a379ae3e81f1"
+                "type": "zip",
+                "url": "https://api.github.com/repos/liberusoftware/module-users-roles/zipball/4aa49df470411bdea1f54abd1a6e76c6173b68d9",
+                "reference": "4aa49df470411bdea1f54abd1a6e76c6173b68d9",
+                "shasum": ""
             },
             "require": {
                 "illuminate/auth": "^13.0",
@@ -5562,19 +5582,16 @@
                     "Liberu\\Foundation\\UsersRoles\\": "src/"
                 }
             },
-            "scripts": {
-                "test": [
-                    "pest"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Shared users, role lookup, user policies, and user factories.",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/liberusoftware/module-users-roles/issues",
+                "source": "https://github.com/liberusoftware/module-users-roles/tree/v1.0.3"
+            },
+            "time": "2026-11-02T15:50:57+00:00"
         },
         {
             "name": "livewire/livewire",

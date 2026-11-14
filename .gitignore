@@ -2,6 +2,8 @@
 /modules/module-manager/
 /modules/module-manager-filament/
 /modules/ecommerce-*/
+!/modules/ecommerce-printful/
+!/modules/ecommerce-dropxl/
 /modules/fixture-*/
 /themes/fixture-*/
 node_modules/

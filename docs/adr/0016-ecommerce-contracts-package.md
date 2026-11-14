@@ -24,4 +24,4 @@ The package also holds optional interfaces (`ProvidesPanelPlugins`, `ProvidesCon
 
 ## Consequences
 
-Until it is published the package is a path repository at `packages/ecommerce-contracts`, outside `modules/` so the package publisher cannot push it. Publishing needs the maintainer's approval, and `composer.json` then changes from the path repository to a version on Packagist.
+`liberusoftware/ecommerce-contracts` is published from [ecommerce-contracts](https://github.com/liberusoftware/ecommerce-contracts) and installed from Packagist. The tracked `packages/ecommerce-contracts` directory remains the default source copy; Composer resolves the versioned package instead of a path repository.
