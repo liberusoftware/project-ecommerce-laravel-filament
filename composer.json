@@ -123,5 +123,10 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "homepage": "https://github.com/liberusoftware/project-ecommerce-laravel-filament",
+    "support": {
+        "issues": "https://github.com/liberusoftware/project-ecommerce-laravel-filament/issues",
+        "source": "https://github.com/liberusoftware/project-ecommerce-laravel-filament"
+    }
 }
