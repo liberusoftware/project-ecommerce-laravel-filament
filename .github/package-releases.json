@@ -1,4 +1,20 @@
 {
+  "liberusoftware/ecommerce-dropxl": {
+    "path": "modules/ecommerce-dropxl",
+    "reference": "90f6b20f822136379725b0ac08f08182cd5c0aea",
+    "repository": "https://github.com/liberusoftware/module-ecommerce-dropxl",
+    "source_signature": "9a0de2fa61184b25825a96ac5b62d23300cd90b2f37f3915ff702a59da5cea38",
+    "source_tree": "2e0c6505bfd6687f2f505c1fd21a00b4e8fbb982",
+    "version": "0.1.1"
+  },
+  "liberusoftware/ecommerce-printful": {
+    "path": "modules/ecommerce-printful",
+    "reference": "d5bec227e54d748c38c1e6becad2a15bb152c6a9",
+    "repository": "https://github.com/liberusoftware/module-ecommerce-printful",
+    "source_signature": "87080145ce7920c9d3fce2f464a4be7e093b83f77abbb6c7ee271385fa4eae71",
+    "source_tree": "569c9a398fb6c39c34d138c2380fd8015bea9593",
+    "version": "0.2.1"
+  },
   "liberusoftware/tenancy": {
     "path": "modules/tenancy",
     "reference": "5c079502cf9c82c304f37eab141c8c7d5a77b2b7",
