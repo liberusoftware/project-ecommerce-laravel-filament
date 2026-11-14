@@ -1,24 +1,26 @@
 {
-    "$schema": "https://schemas.liberu.dev/module/v1.json",
-    "name": "ecommerce-dropxl",
-    "display_name": "DropXL",
-    "description": "DropXL dropshipping fulfilment and catalogue import, activated per store.",
-    "version": "0.1.0",
-    "category": "adapter",
-    "module_type": "feature",
-    "provider": "Liberu\\Ecommerce\\Dropxl\\DropxlServiceProvider",
-    "requires": {
-        "php": "^8.5",
-        "laravel": "^13.0",
-        "packages": {
-            "liberusoftware/ecommerce-contracts": "^1.1"
-        }
-    },
-    "capabilities": ["ecommerce.fulfilment.dropxl"],
-    "default_enabled": false,
-    "features": [
-        "Sends a store's DropXL lines to its own DropXL account",
-        "Checks DropXL stock and reads its tracking",
-        "Imports DropXL products into a store from the admin panel"
-    ]
+  "$schema": "https://schemas.liberu.dev/module/v1.json",
+  "name": "ecommerce-dropxl",
+  "display_name": "DropXL",
+  "description": "DropXL dropshipping fulfilment and catalogue import, activated per store.",
+  "version": "0.1.0",
+  "category": "adapter",
+  "module_type": "feature",
+  "provider": "Liberu\\Ecommerce\\Dropxl\\DropxlServiceProvider",
+  "requires": {
+    "php": "^8.5",
+    "laravel": "^13.0",
+    "packages": {
+      "liberusoftware/ecommerce-contracts": "^1.1"
+    }
+  },
+  "capabilities": [
+    "ecommerce.fulfilment.dropxl"
+  ],
+  "default_enabled": false,
+  "features": [
+    "Sends a store's DropXL lines to its own DropXL account",
+    "Checks DropXL stock and reads its tracking",
+    "Imports DropXL products into a store from the admin panel"
+  ]
 }

@@ -54,8 +54,8 @@ parameters:
         - database
         - routes
         - packages
-        - modules/ecommerce-dropxl
         - modules/ecommerce-printful
+        - modules/ecommerce-dropxl
 
     # Match the sibling repositories: trust the code over its docblocks when the
     # two disagree, rather than reporting the docblock as certain fact.

@@ -27,8 +27,8 @@
         "liberusoftware/ecommerce-contracts": "^1.2",
         "liberusoftware/ecommerce-dropxl": "^0.1",
         "liberusoftware/ecommerce-printful": "^0.2",
-        "liberusoftware/module-manager": "^1.9",
-        "liberusoftware/module-manager-filament": "^1.11",
+        "liberusoftware/module-manager": "^1.9.2",
+        "liberusoftware/module-manager-filament": "^1.11.2",
         "liberusoftware/tenancy": "^1.0.1",
         "liberusoftware/users-roles": "^1.0",
         "livewire/livewire": "^4.4.8",
@@ -123,5 +123,21 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/liberusoftware/module-module-manager-filament.git",
+            "only": [
+                "liberusoftware/module-manager-filament"
+            ]
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/liberusoftware/module-module-manager.git",
+            "only": [
+                "liberusoftware/module-manager"
+            ]
+        }
+    ]
 }
