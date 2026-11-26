@@ -15,7 +15,10 @@ class ViewContactRequest extends ViewRecord
     {
         parent::mount($record);
 
-        $this->getRecord()->markRead();
+        // Only someone who could mark it read by hand does so by opening it.
+        if (static::getResource()::canEdit($this->getRecord())) {
+            $this->getRecord()->markRead();
+        }
     }
 
     protected function getHeaderActions(): array

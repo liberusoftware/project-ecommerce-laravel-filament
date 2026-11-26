@@ -168,7 +168,7 @@ class StoreSettingsTest extends TestCase
         $this->storefront('acme.test', ['email' => 'hello@acme.test']);
 
         $this->post('http://acme.test/contact', [
-            'name' => 'Ada', 'email' => 'ada@example.test', 'message' => 'Do you ship to Ireland at all?',
+            'first_name' => 'Ada', 'last_name' => 'Lovelace', 'email' => 'ada@example.test', 'message' => 'Do you ship to Ireland at all?',
         ]);
 
         Mail::assertSent(ContactMessage::class, fn (ContactMessage $mail) => $mail->hasTo('hello@acme.test'));
@@ -180,7 +180,7 @@ class StoreSettingsTest extends TestCase
         $this->storefront('quiet.test', ['email' => null]);
 
         $this->post('http://quiet.test/contact', [
-            'name' => 'Ada', 'email' => 'ada@example.test', 'message' => 'Do you ship to Ireland at all?',
+            'first_name' => 'Ada', 'last_name' => 'Lovelace', 'email' => 'ada@example.test', 'message' => 'Do you ship to Ireland at all?',
         ]);
 
         Mail::assertSent(ContactMessage::class, fn (ContactMessage $mail) => $mail->hasTo(app(GeneralSettings::class)->site_email));
