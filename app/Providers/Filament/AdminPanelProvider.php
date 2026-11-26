@@ -13,6 +13,7 @@ use App\Filament\Admin\Widgets\SalesOverviewWidget;
 use App\Filament\Admin\Widgets\SalesTrendsChart;
 use App\Filament\Admin\Widgets\TopProductsWidget;
 use App\Filament\App\Pages\EditProfile;
+use App\Filament\App\Resources\ContactRequests\ContactRequestResource;
 use App\Filament\App\Resources\Coupons\CouponResource;
 use App\Filament\App\Resources\Orders\OrderResource;
 use App\Filament\App\Resources\ProductCategories\ProductCategoryResource;
@@ -82,6 +83,7 @@ class AdminPanelProvider extends PanelProvider
                 ProductOptionGroupResource::class,
                 OrderResource::class,
                 CouponResource::class,
+                ContactRequestResource::class,
             ])
             ->pages([
                 FilamentPage\Dashboard::class,

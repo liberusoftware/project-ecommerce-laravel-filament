@@ -39,7 +39,8 @@ class ContactFormTest extends TestCase
     private function validPayload(array $overrides = []): array
     {
         return array_merge([
-            'name' => 'Ada Lovelace',
+            'first_name' => 'Ada',
+            'last_name' => 'Lovelace',
             'email' => 'ada@example.test',
             'subject' => 'Where is order 1043?',
             'message' => 'It was due Tuesday and there has been no update since dispatch.',
@@ -52,6 +53,9 @@ class ContactFormTest extends TestCase
     {
         $this->get(route('contact'))
             ->assertOk()
+            ->assertSee('name="first_name"', false)
+            ->assertSee('name="last_name"', false)
+            ->assertDontSee('name="name"', false)
             ->assertSee('name="message"', false);
     }
 
@@ -67,7 +71,7 @@ class ContactFormTest extends TestCase
         Mail::assertSent(ContactMessage::class, function (ContactMessage $mail) {
             return $mail->hasTo('merchant@example.test')
                 // Reply-To is the sender, so the merchant can just hit reply.
-                && $mail->hasReplyTo('ada@example.test')
+                && $mail->hasReplyTo('ada@example.test', 'Ada Lovelace')
                 && $mail->contactSubject === 'Where is order 1043?';
         });
     }
@@ -76,7 +80,10 @@ class ContactFormTest extends TestCase
     public static function invalidPayloads(): array
     {
         return [
-            'missing name' => [['name' => ''], 'name'],
+            'missing first name' => [['first_name' => ''], 'first_name'],
+            'missing last name' => [['last_name' => ''], 'last_name'],
+            'first name too long' => [['first_name' => str_repeat('a', 101)], 'first_name'],
+            'last name too long' => [['last_name' => str_repeat('a', 101)], 'last_name'],
             'missing email' => [['email' => ''], 'email'],
             'malformed email' => [['email' => 'not-an-address'], 'email'],
             'missing message' => [['message' => ''], 'message'],
@@ -120,7 +127,7 @@ class ContactFormTest extends TestCase
         $this->post(route('contact.send'), $this->validPayload());
 
         $kept = ContactRequest::query()->withoutGlobalScopes()->sole();
-        $this->assertSame(['Ada Lovelace', 'ada@example.test', 'Where is order 1043?'], [$kept->name, $kept->email, $kept->subject]);
+        $this->assertSame(['Ada', 'Lovelace', 'ada@example.test', 'Where is order 1043?'], [$kept->first_name, $kept->last_name, $kept->email, $kept->subject]);
         $store = Channel::query()->sole()->store;
         $this->assertSame([$store->id, $store->team_id], [$kept->store_id, $kept->team_id]);
         $this->assertNull($kept->read_at);

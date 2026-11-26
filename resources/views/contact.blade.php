@@ -45,13 +45,20 @@
 
                     <div class="grid gap-5 sm:grid-cols-2">
                         <div>
-                            <x-label for="name" value="Your name" />
-                            <x-input id="name" class="mt-1 block w-full" type="text" name="name"
-                                     :value="old('name')" required autocomplete="name" />
-                            <x-input-error for="name" class="mt-1" />
+                            <x-label for="first_name" value="First name" />
+                            <x-input id="first_name" class="mt-1 block w-full" type="text" name="first_name"
+                                     :value="old('first_name')" required maxlength="100" autocomplete="given-name" />
+                            <x-input-error for="first_name" class="mt-1" />
                         </div>
 
                         <div>
+                            <x-label for="last_name" value="Last name" />
+                            <x-input id="last_name" class="mt-1 block w-full" type="text" name="last_name"
+                                     :value="old('last_name')" required maxlength="100" autocomplete="family-name" />
+                            <x-input-error for="last_name" class="mt-1" />
+                        </div>
+
+                        <div class="sm:col-span-2">
                             <x-label for="email" value="Email" />
                             <x-input id="email" class="mt-1 block w-full" type="email" name="email"
                                      :value="old('email')" required autocomplete="email" />

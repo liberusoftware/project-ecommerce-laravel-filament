@@ -29,7 +29,8 @@ class ContactController extends Controller
         }
 
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:100'],
+            'first_name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:100'],
             // This address becomes a Reply-To header, so a CRLF payload here would be
             // header injection. email:rfc rejects that on its own — verified, and
             // ContactFormTest pins the behaviour rather than the mechanism, so it
@@ -47,7 +48,7 @@ class ContactController extends Controller
         // MAIL_CONTACT_TO keeps the form's inbox apart from the address the shop publishes.
         try {
             Mail::to(config('mail.contact_to') ?: Store::current()?->email ?: $settings->site_email)->send(new ContactMessage(
-                senderName: $enquiry->name,
+                senderName: $enquiry->full_name,
                 senderEmail: $enquiry->email,
                 contactSubject: $enquiry->subject ?: 'No subject',
                 body: $enquiry->message,

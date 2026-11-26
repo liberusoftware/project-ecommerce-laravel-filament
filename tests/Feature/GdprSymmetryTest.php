@@ -34,7 +34,7 @@ class GdprSymmetryTest extends TestCase
         PaymentMethod::create(['user_id' => $user->id, 'name' => 'Visa …4242', 'details' => 'tok_x']);
         ProductReview::create(['product_id' => $product->id, 'customer_id' => $customer->id, 'comments' => 'Lovely']);
         ProductRating::create(['product_id' => $product->id, 'customer_id' => $customer->id, 'rating' => 5]);
-        ContactRequest::create(['name' => $user->name, 'email' => $user->email, 'message' => 'Where is my parcel?']);
+        ContactRequest::create(['first_name' => $user->name, 'last_name' => 'Example', 'email' => $user->email, 'message' => 'Where is my parcel?']);
 
         $user->wishlist_share_token = 'a-published-share-token';
         $user->save();
